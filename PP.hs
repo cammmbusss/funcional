@@ -8,7 +8,8 @@ import AST
 -- El comportamiento de la función se especifica en la letra de la Tarea.
 
 ppProg :: Prog -> String
-ppProg prog = concatMap (ppFun 0) prog 
+ppProg prog = concatMap (\f -> ppFun 0 f ++ "\n") (init prog)
+             ++ ppFun 0 (last prog)
 
 
 ppFun :: Int -> Fun -> String
